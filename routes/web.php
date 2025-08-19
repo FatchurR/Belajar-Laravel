@@ -8,12 +8,11 @@ Route::get('/', function(){
   return "<h1>Halo Saya FatchurR</h1>";
 });
 
-Route::get('/store',function(){
-    return view('produk.index');
-});
+Route::get('/store', [ProdukbengkelController::class, 'index'])->name('produk.index');
 
 Route::get('/bengkel',[bengkelcontroller::class,'halo']);
-Route::get('/produktable', [ProdukbengkelController::class,'index'])->name('produk.index');
 Route::post('/store', [ProdukbengkelController::class, 'store'])->name('produk.store');
-
-
+Route::get('/produk/{produk}', [ProdukbengkelController::class, 'show'])->name('produk.show');
+Route::get('/produk/{produk}/edit', [ProdukbengkelController::class, 'edit'])->name('produk.edit');
+Route::put('/produk/{produk}', [ProdukbengkelController::class, 'update'])->name('produk.update');
+Route::delete('/produk/{produk}', [ProdukbengkelController::class, 'destroy'])->name('produk.destroy');
